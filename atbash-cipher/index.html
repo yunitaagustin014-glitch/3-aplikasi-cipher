@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Atbash Cipher</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            width: 500px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Atbash Cipher</h1>
+
+    <p>A = Z, B = Y, C = X</p>
+
+    <textarea id="input" placeholder="Masukkan teks"></textarea>
+
+    <br>
+
+    <button onclick="processCipher()">Enkripsi / Dekripsi</button>
+
+    <textarea id="result" placeholder="Hasil" readonly></textarea>
+
+</div>
+
+<script>
+
+function processCipher() {
+
+    let text = document.getElementById("input").value;
+    let result = "";
+
+    for (let char of text) {
+
+        if (char >= 'A' && char <= 'Z') {
+
+            result += String.fromCharCode(
+                90 - (char.charCodeAt(0) - 65)
+            );
+
+        } else if (char >= 'a' && char <= 'z') {
+
+            result += String.fromCharCode(
+                122 - (char.charCodeAt(0) - 97)
+            );
+
+        } else {
+
+            result += char;
+
+        }
+    }
+
+    document.getElementById("result").value = result;
+}
+
+</script>
+
+</body>
+</html>
